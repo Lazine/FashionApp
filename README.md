@@ -1,5 +1,5 @@
 # FashionApp
 
-follow William Candillon's tutorial React Native Fashion
+follow William Candillon's amazing tutorial
 
-[https://www.youtube.com/watch?v=MqRnpUC4czs]
+This is just my personal exercise. Not for using.
