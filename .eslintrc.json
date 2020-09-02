@@ -1,0 +1,61 @@
+{
+  "env": {
+		"browser": true,
+		"commonjs": true,
+		"es6": true,
+		"node": true
+	},
+	"globals": {
+		"__DEV__": true
+	},
+	"parser": "babel-eslint",
+	"extends": [
+		"eslint:recommended",
+    "plugin:react/recommended",
+    "react-native-community"
+	],
+	"parserOptions": {
+		"ecmaFeatures": {
+			"experimentalObjectRestSpread": true,
+			"jsx": true
+		},
+		"sourceType": "module"
+	},
+	"plugins": [
+		"react",
+		"react-native"
+	],
+	"rules": {
+		"curly": "error",
+		"eqeqeq": "error",
+		"indent": [
+			"error",
+			2,
+			{
+				"SwitchCase": 1
+			}
+		],
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
+		"quotes": [
+			"error",
+			"single"
+		],
+		"semi": [
+			"error",
+			"always"
+		],
+		"comma-spacing": ["error", { "before": false, "after": true }],
+		"no-console": "off",
+		"space-infix-ops": ["error", { "int32Hint": false }],
+		"arrow-spacing": ["error", { "before": true, "after": true }],
+    "react-native/no-unused-styles": "error",
+    "react-native/split-platform-components": 0,
+    "react-native/no-inline-styles": "error",
+		"react-native/no-color-literals": "error"
+	},
+  "root": true
+  // "extends": 'react-native-community',
+}

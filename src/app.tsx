@@ -1,7 +1,4 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
  * @format
  * @flow strict-local
  */
@@ -9,20 +6,33 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import OnBoarding from './Authentication/Onboarding';
+import LoadAssets from './component/loadasset';
+
+const fonts = {
+  'SFProText-Bold': require('./assets/fonts/SF-Pro-Text-Bold.otf'),
+  'SFProText-Semibold': require('./assets/fonts/SF-Pro-Text-Semibold.otf'),
+  'SFProText-Regular': require('./assets/fonts/SF-Pro-Text-Regular.otf'),
+};
 
 const AuthenticationStack = createStackNavigator();
 
-export const AuthenticationNavigator = () => {
+const AuthenticationNavigator = () => {
+  return(
   <AuthenticationStack.Navigator>
-    <AuthenticationStack.Screen name="OnBoarding" component={OnBoarding} />
-  </AuthenticationStack.Navigator>;
+    <AuthenticationStack.Screen 
+      name='OnBoarding' 
+      component={OnBoarding} 
+      options={{headerShown:false}}/>
+  </AuthenticationStack.Navigator>
+  );
 };
 
 const App = () => {
   return (
-    <NavigationContainer>
+    <LoadAssets {...{ fonts }}>
       <AuthenticationNavigator />
-    </NavigationContainer>
+    </LoadAssets>
   );
 };
 
