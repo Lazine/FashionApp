@@ -2,7 +2,7 @@ import React, { ReactElement, useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, Linking, Platform } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { InitialState, NavigationContainer } from '@react-navigation/native';
-import * as Font from 'expo-font';
+// import * as Font from 'expo-font';
 // import { AppLoading } from 'expo';
 // import { Asset } from 'expo-asset';
 // import Constants from 'expo-constants';
@@ -37,7 +37,7 @@ interface LoadAssetsProps {
 const LoadAssets = ({ fonts, children }: LoadAssetsProps) => {
   const [isNavigationReady, setIsNavigationReady] = useState(!__DEV__);
   const [initialState, setInitialState] = useState<InitialState | undefined>();
-  const ready = useState(fonts || {});
+  // const ready = useState(fonts || {});
   useEffect(() => {
     const restoreState = async () => {
       try {

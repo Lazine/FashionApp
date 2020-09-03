@@ -8,11 +8,11 @@
 	"globals": {
 		"__DEV__": true
 	},
-	"parser": "babel-eslint",
+	"parser": "@typescript-eslint/parser",
 	"extends": [
 		"eslint:recommended",
     "plugin:react/recommended",
-    "react-native-community"
+		"plugin:@typescript-eslint/recommended"
 	],
 	"parserOptions": {
 		"ecmaFeatures": {
@@ -23,7 +23,8 @@
 	},
 	"plugins": [
 		"react",
-		"react-native"
+		"react-native",
+		"@typescript-eslint"
 	],
 	"rules": {
 		"curly": "error",
@@ -40,7 +41,7 @@
 			"unix"
 		],
 		"quotes": [
-			"error",
+			false,
 			"single"
 		],
 		"semi": [

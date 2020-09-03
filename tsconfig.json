@@ -29,35 +29,5 @@
     "metro.config.js",
     "jest.config.js"
   ],
-  "rules": {
-		"curly": "error",
-		"eqeqeq": "error",
-		"indent": [
-			"error",
-			2,
-			{
-				"SwitchCase": 1
-			}
-		],
-		"linebreak-style": [
-			"error",
-			"unix"
-		],
-		"quotes": [
-			"error",
-			"single"
-		],
-		"semi": [
-			"error",
-			"always"
-		],
-		"comma-spacing": ["error", { "before": false, "after": true }],
-		"no-console": "off",
-		"space-infix-ops": ["error", { "int32Hint": false }],
-		"arrow-spacing": ["error", { "before": true, "after": true }],
-    "react-native/no-unused-styles": "error",
-    "react-native/split-platform-components": 0,
-    "react-native/no-inline-styles": "error",
-		"react-native/no-color-literals": "error"
-	}
+  
 }
