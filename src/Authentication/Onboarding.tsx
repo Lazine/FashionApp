@@ -1,14 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-native/no-color-literals */
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { View, ScrollView, StyleSheet, Dimensions, Text } from 'react-native';
 import Slider, { SLIDER_HEIGHT } from './slider';
 import SubSlider from './subslide';
-import { useValue, onScrollEvent, interpolateColor} from 'react-native-redash';
-import Animated from 'react-native-reanimated';
+import { useValue, onScrollEvent, interpolateColor } from 'react-native-redash';
+import Animated, { multiply } from 'react-native-reanimated';
 
 const { width, height } = Dimensions.get('window');
-
+const BORDER_RADIUS = 75;
 const slides = [
   { 
     title: 'Relaxed', 
@@ -38,7 +38,7 @@ const slides = [
 
 
 const Onboarding = () => {
-
+  const ScrollRef = useRef<Animated.ScrollView>(null);
   const x = useValue(0);
   // const [y] = useState(new Animated.Value(0));
 
@@ -58,6 +58,7 @@ const Onboarding = () => {
     <View style={styles.container}>
       <Animated.View style={[styles.slider, { backgroundColor }]}>
         <Animated.ScrollView 
+          ref={ScrollRef}
           horizontal 
           snapToInterval={ width } 
           decelerationRate='fast'
@@ -77,15 +78,30 @@ const Onboarding = () => {
         </Animated.ScrollView>
       </Animated.View>
       <View style={styles.footer}>
-        <Animated.View style={{ ...StyleSheet.absoluteFillObject, backgroundColor }}></Animated.View>
-        <View style={styles.footerContent}>
-          { slides.map(({ subTitle, info}, index )=> (
+        <Animated.View 
+          style={{ ...StyleSheet.absoluteFillObject, backgroundColor }}
+        />
+        <Animated.View 
+          style={[
+            styles.footerContent, 
+            { width: width * slides.length, flex: 1, transform: [{ translateX: multiply( x, -1 ) }] 
+          }]}
+        >
+          { slides.map(({ subTitle, info }, index ) => (
             <SubSlider 
               key={ index } 
-              latest={ index === slides.length - 1 } 
+              onPress={()=>{
+                if(ScrollRef.current){
+                  console.log({ scrollTo: width * index });
+                  ScrollRef.current
+                    .getNode()
+                    .scrollTo({ x: width * index, animated: true })
+                }
+              }}
+              last={ index === slides.length - 1 } 
               {...{ subTitle, info}}/>
           ))}
-        </View>
+        </Animated.View>
       </View>
     </View>
   );
@@ -99,16 +115,17 @@ const styles = StyleSheet.create({
   slider: {
     height: SLIDER_HEIGHT,
     // backgroundColor: '#ec8',
-    borderBottomRightRadius: 75,
+    borderBottomRightRadius: BORDER_RADIUS,
   },
   footer: {
     flex: 1,
   },
   footerContent: {
     flex: 1, 
+    flexDirection: 'row',
     backgroundColor: '#fff', 
-    borderTopLeftRadius: 75
-  }
+    borderTopLeftRadius: BORDER_RADIUS,
+  },
   // absoluteFillObject: {
   //   position: 'absolute',
   //   top: 0,

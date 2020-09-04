@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-color-literals */
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import Button from '../component/button';
 
 const { width, height } = Dimensions.get('screen');
 export const SLIDER_HEIGHT = 0.61 * height;
@@ -8,21 +9,20 @@ export const SLIDER_HEIGHT = 0.61 * height;
 interface SubSliderProps {
   subTitle: string;
   info: string;
-  latest: boolean;
+  last?: boolean;
+  onPress: () => void;
 }
 
-const SubSlider = ({ subTitle, info, latest } : SubSliderProps) => {
-  // const transform = [
-  //   { translateY: ( SLIDER_HEIGHT - 100) / 2  },
-  //   { translateX: latest ? width / 2 - 50 : - width / 2 + 50 },
-  //   { rotate: latest ? '-90deg' : '90deg' }
-  // ];
+const SubSlider = ({ subTitle, info, last, onPress } : SubSliderProps) => {
   return (
     <View style={styles.container}>
-      <View style={[styles.titleContainer]}>
-        <Text style={styles.titleText}>{subTitle}</Text>
-        <Text style={styles.titleText}>{info}</Text>
-      </View>
+      <Text style={styles.subTitle}>{subTitle}</Text>
+      <Text style={styles.description}>{info}</Text>
+      <Button 
+        label={ last ? "Let's get Start!" : "next"} 
+        variant={ last ? "primary" : "default"} 
+        {...{ onPress }} 
+      />
     </View>
   );
 };
@@ -30,20 +30,27 @@ const SubSlider = ({ subTitle, info, latest } : SubSliderProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    width,
-    // height,
-  },
-  titleContainer: {
-    // backgroundColor: '#3da',
-    height: 100,
+    flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
+    padding: 24,
+    borderTopLeftRadius: 75,
   },
-  titleText: {
-    fontSize: 20,
-    lineHeight: 20,
-    fontFamily: 'SFProText-Bold',
-    color: '#000',
+  subTitle: {
+    fontSize: 24,
+    lineHeight: 30,
+    fontFamily: 'SFProText-Semibold',
+    marginBottom: 12,
+    color: '#0c0d34',
     textAlign: 'center',
+  },
+  description: {
+    fontSize: 16,
+    lineHeight: 24,
+    fontFamily: 'SFProText-Regular',
+    color: '#0c0d34',
+    textAlign: 'center',
+    marginBottom: 40,
   }
 });
 

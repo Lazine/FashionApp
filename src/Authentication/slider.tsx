@@ -7,7 +7,7 @@ export const SLIDER_HEIGHT = 0.61 * height;
 
 interface SliderProps {
   title: string;
-  right: boolean | number;
+  right?: boolean | number;
 }
 
 const Slider = ({ title, right } : SliderProps) => {
