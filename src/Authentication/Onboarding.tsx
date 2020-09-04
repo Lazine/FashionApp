@@ -92,10 +92,10 @@ const Onboarding = () => {
               key={ index } 
               onPress={()=>{
                 if(ScrollRef.current){
-                  console.log({ scrollTo: width * index });
+                  console.log({ scrollTo: width * (index + 1) });
                   ScrollRef.current
                     .getNode()
-                    .scrollTo({ x: width * index, animated: true })
+                    .scrollTo({ x: width * (index + 1), animated: true })
                 }
               }}
               last={ index === slides.length - 1 } 

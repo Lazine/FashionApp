@@ -8,16 +8,16 @@ const { width, height } = Dimensions.get('screen');
 interface SubSliderProps {
   variant: "primary" | "default";
   label: string;
-  
+  onPress: () => void;
 }
 
-const Button = ({ variant, label } : SubSliderProps) => {
+const Button = ({ variant, label, onPress } : SubSliderProps) => {
   const backgroundColor = 
     variant === "primary" ? "#2cb9b0" : " rgba(12, 13, 52, 0.1)";
     const color = variant === "primary" ? "white" : "#0c0b34";
 
   return (
-    <RectButton style={[styles.container, { backgroundColor }]}>
+    <RectButton style={[styles.container, { backgroundColor }]} {...{onPress}}>
       <Text style={[styles.label, { color }]}>{label}</Text>
     </RectButton>
   );
