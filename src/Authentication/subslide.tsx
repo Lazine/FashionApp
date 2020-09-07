@@ -16,8 +16,8 @@ interface SubSliderProps {
 const SubSlider = ({ subTitle, info, last, onPress } : SubSliderProps) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.subTitle}>{subTitle}</Text>
-      <Text style={styles.description}>{info}</Text>
+      <Text style={styles.subTitle}>{ subTitle }</Text>
+      <Text style={styles.description}>{ info }</Text>
       <Button 
         label={ last ? "Let's get Start!" : "next"} 
         variant={ last ? "primary" : "default"} 

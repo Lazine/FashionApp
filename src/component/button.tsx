@@ -17,8 +17,8 @@ const Button = ({ variant, label, onPress } : SubSliderProps) => {
     const color = variant === "primary" ? "white" : "#0c0b34";
 
   return (
-    <RectButton style={[styles.container, { backgroundColor }]} {...{onPress}}>
-      <Text style={[styles.label, { color }]}>{label}</Text>
+    <RectButton style={[styles.container, { backgroundColor }]} {...{ onPress }}>
+      <Text style={[styles.label, { color }]}>{ label }</Text>
     </RectButton>
   );
 };

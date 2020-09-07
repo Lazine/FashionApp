@@ -2,48 +2,51 @@
 /* eslint-disable react-native/no-color-literals */
 import React, { useRef } from 'react';
 import { View, ScrollView, StyleSheet, Dimensions, Text } from 'react-native';
-import Slider, { SLIDER_HEIGHT } from './slider';
+import Slider, { SLIDER_HEIGHT, BORDER_RADIUS } from './slider';
 import SubSlider from './subslide';
-import { useValue, onScrollEvent, interpolateColor } from 'react-native-redash';
-import Animated, { multiply } from 'react-native-reanimated';
+import Dot from './dot';
+import { useValue, onScrollEvent, interpolateColor, useScrollHandler } from 'react-native-redash';
+import Animated, { multiply, divide } from 'react-native-reanimated';
 
 const { width, height } = Dimensions.get('window');
-const BORDER_RADIUS = 75;
+// const BORDER_RADIUS = 75;
 const slides = [
   { 
     title: 'Relaxed', 
     subTitle: 'Find Your Outfit', 
     info: "Confused about your outfits? Don't worry ! Find the best outfit.",
-    color: '#bfeaf5' 
+    color: '#bfeaf5',
+    picture: require('../assets/pic/1.png'),
   },
   { 
     title: 'Playful', 
     subTitle: 'Hear it first. Wear it first.',
     info: 'Hating the clothes in your wardrobe? Explore hundreds of outfit idea.',
-    color: '#beecc4'
+    color: '#beecc4',
+    picture: require('../assets/pic/2.png'),
   },
   { 
     title: 'excentric',
     subTitle: 'Your Style, Your Way.',
     info: 'Create your individual & unique style and look amazing everyday',
-    color: '#ffe4d9'
+    color: '#ffe4d9',
+    picture: require('../assets/pic/3.png'),
   },
   { 
     title: 'funky', 
     subTitle: 'Look good, Feel good.',
     info: 'over the latest trends in fashion and explore your personalty',
-    color: '#ffdddd'
+    color: '#ffdddd',
+    picture: require('../assets/pic/4.png'),
   },
 ]
 
 
 const Onboarding = () => {
   const ScrollRef = useRef<Animated.ScrollView>(null);
-  const x = useValue(0);
   // const [y] = useState(new Animated.Value(0));
 
-  //  TODO: useScrollEvent
-  const onScroll = onScrollEvent({ x });
+  const { scrollHandler, x } = useScrollHandler();
 
   // const changeColor = y.interpolate({
   //   inputRange: [0, width, width * 2, width * 3],
@@ -64,43 +67,49 @@ const Onboarding = () => {
           decelerationRate='fast'
           showsHorizontalScrollIndicator={false}
           bounces={false}
-          scrollEventThrottle={16}
-          {...{ onScroll }}
+          // scrollEventThrottle={16}
+          { ...scrollHandler }
         >
-          { slides.map(({ title, },index)=> (
-            <Slider key={ index } right={(index % 2)} {...{ title }}/>
+          { slides.map(({ title, picture }, index )=> (
+            <Slider key={ index } right={(index % 2)} {...{ title, picture }}/>
           ))}
-          {/* <Slider label='relaxed' />
-          <Slider label='playful' right/>
-          <Slider label='excentric' />
-          <Slider label='funky' right/> */}
-
         </Animated.ScrollView>
       </Animated.View>
+
       <View style={styles.footer}>
         <Animated.View 
           style={{ ...StyleSheet.absoluteFillObject, backgroundColor }}
         />
-        <Animated.View 
-          style={[
-            styles.footerContent, 
-            { width: width * slides.length, flex: 1, transform: [{ translateX: multiply( x, -1 ) }] 
-          }]}
-        >
+        <Animated.View style={styles.footerContent}>
+          <View style={styles.pagination}>
+            {slides.map(( _, index) => ( 
+              <Dot key={ index } currentIndex={ divide( x, width ) } {...{ index, x }}/>
+            ))}
+          </View>
+          <Animated.View 
+            style={{ 
+              flex: 1, 
+              flexDirection: 'row',
+              width: width * slides.length,
+              transform: [{ translateX: multiply( x, -1 ) }]
+            }}
+          >
           { slides.map(({ subTitle, info }, index ) => (
-            <SubSlider 
-              key={ index } 
-              onPress={()=>{
-                if(ScrollRef.current){
-                  console.log({ scrollTo: width * (index + 1) });
-                  ScrollRef.current
-                    .getNode()
-                    .scrollTo({ x: width * (index + 1), animated: true })
-                }
-              }}
-              last={ index === slides.length - 1 } 
-              {...{ subTitle, info}}/>
+              <SubSlider 
+                key={ index } 
+                onPress={()=>{
+                  if(ScrollRef.current){
+                    console.log({ scrollTo: width * (index + 1) });
+                    ScrollRef.current
+                      .getNode()
+                      .scrollTo({ x: width * (index + 1), animated: true })
+                  }
+                }}
+                last={ index === slides.length - 1 } 
+                {...{ subTitle, info}}
+              />
           ))}
+          </Animated.View>
         </Animated.View>
       </View>
     </View>
@@ -122,10 +131,18 @@ const styles = StyleSheet.create({
   },
   footerContent: {
     flex: 1, 
-    flexDirection: 'row',
+    // flexDirection: 'row',
     backgroundColor: '#fff', 
     borderTopLeftRadius: BORDER_RADIUS,
   },
+  pagination: {
+    ...StyleSheet.absoluteFillObject,
+    height: BORDER_RADIUS,
+    // width,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  }
   // absoluteFillObject: {
   //   position: 'absolute',
   //   top: 0,
