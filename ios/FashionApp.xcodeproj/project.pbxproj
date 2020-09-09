@@ -22,7 +22,7 @@
 		B74E9BD224FF98690036797A /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B74E9BCF24FF98690036797A /* SF-Pro-Text-Bold.otf */; };
 		B74E9BD324FF98690036797A /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B74E9BD024FF98690036797A /* SF-Pro-Text-Regular.otf */; };
 		B74E9BD424FF98690036797A /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B74E9BD124FF98690036797A /* SF-Pro-Text-Semibold.otf */; };
-		B79565D925024A13008E5AC0 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 008F07F21AC5B25A0029DE68 /* main.jsbundle */; };
+		B7E4168D25078F1100230583 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = B7E4168C25078F1100230583 /* main.jsbundle */; };
 		FF45DA6B4E02498F0C52D182 /* libPods-FashionApp-FashionAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC28BE454F9C253970553379 /* libPods-FashionApp-FashionAppTests.a */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +44,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* FashionAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FashionAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* FashionAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FashionAppTests.m; sourceTree = "<group>"; };
@@ -67,6 +66,7 @@
 		B74E9BCF24FF98690036797A /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Text-Bold.otf"; path = "../../src/assets/fonts/SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
 		B74E9BD024FF98690036797A /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Text-Regular.otf"; path = "../../src/assets/fonts/SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		B74E9BD124FF98690036797A /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Text-Semibold.otf"; path = "../../src/assets/fonts/SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		B7E4168C25078F1100230583 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		C08ECD7D0260D653A0D97EF0 /* libPods-FashionApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FashionApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D445A374937B7F2B57AF9F7F /* Pods-FashionApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionApp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-FashionApp-tvOSTests/Pods-FashionApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D8A0D291E85645F34A798C06 /* Pods-FashionApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionApp.release.xcconfig"; path = "Target Support Files/Pods-FashionApp/Pods-FashionApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 		13B07FAE1A68108700A75B9A /* FashionApp */ = {
 			isa = PBXGroup;
 			children = (
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				B7E4168C25078F1100230583 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -358,7 +358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B79565D925024A13008E5AC0 /* main.jsbundle in Resources */,
+				B7E4168D25078F1100230583 /* main.jsbundle in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				B74E9BD424FF98690036797A /* SF-Pro-Text-Semibold.otf in Resources */,
@@ -397,7 +397,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "cd $PROJECT_DIR/..\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
+			shellScript = "cd $PROJECT_DIR/..\nexport NODE_BINARY=node ../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		26E6AEA63EF4E00DB6B46BB2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

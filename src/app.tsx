@@ -6,8 +6,9 @@
 import * as React from 'react';
 // import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import OnBoarding from './Authentication/Onboarding';
-import LoadAssets from './component/loadasset';
+import { Onboarding, Welcome } from './Authentication';
+import { LoadAssets, theme } from './component';
+import { ThemeProvider, createBox, createText } from '@shopify/restyle';
 
 // const fonts = {
 //   'SFProText-Bold': require('./assets/fonts/SF-Pro-Text-Bold.otf'),
@@ -19,20 +20,26 @@ const AuthenticationStack = createStackNavigator();
 
 const AuthenticationNavigator = () => {
   return(
-    <AuthenticationStack.Navigator>
-      <AuthenticationStack.Screen 
-        name='OnBoarding' 
-        component={OnBoarding} 
-        options={{headerShown:false}}/>
-    </AuthenticationStack.Navigator>
+      <AuthenticationStack.Navigator>
+        <AuthenticationStack.Screen 
+          name='Onboarding' 
+          component={Onboarding} 
+          options={{headerShown:false}}/>
+        <AuthenticationStack.Screen 
+          name='Welcome' 
+          component={Welcome} 
+          options={{headerShown:false}}/>
+      </AuthenticationStack.Navigator>
   );
 };
 
 const App = () => {
   return (
-    <LoadAssets>
-      <AuthenticationNavigator />
-    </LoadAssets>
+    <ThemeProvider {...{ theme }}>
+      <LoadAssets>
+        <AuthenticationNavigator />
+      </LoadAssets>
+    </ThemeProvider>
   );
 };
 

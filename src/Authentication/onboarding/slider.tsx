@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-color-literals */
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, Image } from 'react-native';
+import { View, StyleSheet, Dimensions, Image } from 'react-native';
+import { Text } from '../../component';
 
 const { width, height } = Dimensions.get('screen');
 export const SLIDER_HEIGHT = 0.61 * height;
@@ -24,7 +25,7 @@ const Slider = ({ title, right, picture } : SliderProps) => {
         <Image source={picture} style={styles.picture} />
       </View>
       <View style={[styles.titleContainer, { transform }]}>
-        <Text style={styles.titleText}>{ title }</Text>
+        <Text variant="hero">{ title }</Text>
       </View>
     </View>
   );

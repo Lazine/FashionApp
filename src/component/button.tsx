@@ -2,8 +2,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get('screen');
+
+// const restyleFunction = [ color, backgroundColor];
 
 interface SubSliderProps {
   variant: "primary" | "default";
@@ -12,9 +16,9 @@ interface SubSliderProps {
 }
 
 const Button = ({ variant, label, onPress } : SubSliderProps) => {
-  const backgroundColor = 
-    variant === "primary" ? "#2cb9b0" : " rgba(12, 13, 52, 0.1)";
-    const color = variant === "primary" ? "white" : "#0c0b34";
+  const theme = useTheme<Theme>();
+  const backgroundColor = variant === "primary" ? theme.colors.primary : theme.colors.body;
+  const color = variant === "primary" ? theme.colors.white : theme.colors.title;
 
   return (
     <RectButton style={[styles.container, { backgroundColor }]} {...{ onPress }}>

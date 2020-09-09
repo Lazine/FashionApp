@@ -16,62 +16,74 @@ const slides = [
     subTitle: 'Find Your Outfit', 
     info: "Confused about your outfits? Don't worry ! Find the best outfit.",
     color: '#bfeaf5',
-    picture: require('../assets/pic/1.png'),
+    picture: require('../../../pic/1.png'),
   },
   { 
     title: 'Playful', 
     subTitle: 'Hear it first. Wear it first.',
     info: 'Hating the clothes in your wardrobe? Explore hundreds of outfit idea.',
     color: '#beecc4',
-    picture: require('../assets/pic/2.png'),
+    picture: require('../../../pic/2.png'),
   },
   { 
     title: 'excentric',
     subTitle: 'Your Style, Your Way.',
     info: 'Create your individual & unique style and look amazing everyday',
     color: '#ffe4d9',
-    picture: require('../assets/pic/3.png'),
+    picture: require('../../../pic/3.png'),
   },
   { 
     title: 'funky', 
     subTitle: 'Look good, Feel good.',
     info: 'over the latest trends in fashion and explore your personalty',
     color: '#ffdddd',
-    picture: require('../assets/pic/4.png'),
+    picture: require('../../../pic/4.png'),
   },
 ]
 
 
 const Onboarding = () => {
-  const ScrollRef = useRef<Animated.ScrollView>(null);
-  // const [y] = useState(new Animated.Value(0));
 
+  const ScrollRef = useRef<Animated.ScrollView>(null); 
   const { scrollHandler, x } = useScrollHandler();
-
-  // const changeColor = y.interpolate({
-  //   inputRange: [0, width, width * 2, width * 3],
-  //   outputRange: ['#bfeaf5', '#beecc4', '#ffe4d9', '#ffdddd']
-  // })
+  
   const backgroundColor = interpolateColor(x, {
-    inputRange: slides.map((_, i) => i * width),
-    outputRange: slides.map((slide) => slide.color),
+    inputRange: slides.map(( _, i ) => i * width ),
+    outputRange: slides.map(( slide ) => slide.color ),
   });
+  
+  // 不使用react-native-redash的寫法
+  // const [animatedValue] = useState(new Animated.Value(0));
+  // let interpolatedColor = animatedValue.interpolate({
+  //   inputRange: [0, width, width * 2, width * 3],
+  //   outputRange: ['#bfeaf5', '#beecc4', '#ffe4d9', '#ffdddd'],
+  //   extrapolate: 'clamp'
+  // });
+
+  // let event = Animated.event([
+  //   { nativeEvent: {
+  //       contentOffset: {
+  //         y: animatedValue
+  //       }
+  //    }}
+  // ]);
 
   return (
     <View style={styles.container}>
-      <Animated.View style={[styles.slider, { backgroundColor }]}>
+      <Animated.View style={[styles.slider, { backgroundColor } /* backgroundColor: interpolatedColor */ ]}>
         <Animated.ScrollView 
-          ref={ScrollRef}
+          ref={ ScrollRef }
           horizontal 
           snapToInterval={ width } 
           decelerationRate='fast'
-          showsHorizontalScrollIndicator={false}
-          bounces={false}
+          showsHorizontalScrollIndicator={ false }
+          bounces={ false }
           // scrollEventThrottle={16}
+          // onScroll={event}
           { ...scrollHandler }
         >
           { slides.map(({ title, picture }, index )=> (
-            <Slider key={ index } right={(index % 2)} {...{ title, picture }}/>
+            <Slider key={ index } right={( index % 2 )} { ...{ title, picture }}/>
           ))}
         </Animated.ScrollView>
       </Animated.View>
@@ -82,8 +94,8 @@ const Onboarding = () => {
         />
         <Animated.View style={styles.footerContent}>
           <View style={styles.pagination}>
-            {slides.map(( _, index) => ( 
-              <Dot key={ index } currentIndex={ divide( x, width ) } {...{ index, x }}/>
+            {slides.map(( _, index ) => ( 
+              <Dot key={ index } currentIndex={ divide( x, width ) } { ...{ index, x }}/>
             ))}
           </View>
           <Animated.View 
@@ -97,8 +109,8 @@ const Onboarding = () => {
           { slides.map(({ subTitle, info }, index ) => (
               <SubSlider 
                 key={ index } 
-                onPress={()=>{
-                  if(ScrollRef.current){
+                onPress={() => {
+                  if( ScrollRef.current ){
                     console.log({ scrollTo: width * (index + 1) });
                     ScrollRef.current
                       .getNode()
@@ -106,7 +118,7 @@ const Onboarding = () => {
                   }
                 }}
                 last={ index === slides.length - 1 } 
-                {...{ subTitle, info}}
+                { ...{ subTitle, info }}
               />
           ))}
           </Animated.View>
