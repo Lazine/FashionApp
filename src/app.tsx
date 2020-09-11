@@ -9,6 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Onboarding, Welcome } from './Authentication';
 import { LoadAssets, theme } from './component';
 import { ThemeProvider, createBox, createText } from '@shopify/restyle';
+import 'react-native-gesture-handler';
 
 // const fonts = {
 //   'SFProText-Bold': require('./assets/fonts/SF-Pro-Text-Bold.otf'),
@@ -20,14 +21,16 @@ const AuthenticationStack = createStackNavigator();
 
 const AuthenticationNavigator = () => {
   return(
-      <AuthenticationStack.Navigator>
-        <AuthenticationStack.Screen 
-          name='Onboarding' 
-          component={Onboarding} 
-          options={{headerShown:false}}/>
+      <AuthenticationStack.Navigator
+        initialRouteName='Welcome'
+        screenOptions={{headerShown:false}}>
         <AuthenticationStack.Screen 
           name='Welcome' 
           component={Welcome} 
+          options={{headerShown:false}}/>
+        <AuthenticationStack.Screen 
+          name='Onboarding' 
+          component={Onboarding} 
           options={{headerShown:false}}/>
       </AuthenticationStack.Navigator>
   );

@@ -10,7 +10,7 @@ export const BORDER_RADIUS = 75;
 interface SliderProps {
   title: string;
   right?: boolean | number;
-  picture: number;
+  picture: string;
 }
 
 const Slider = ({ title, right, picture } : SliderProps) => {

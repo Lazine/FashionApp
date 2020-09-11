@@ -2,6 +2,8 @@ import React, { ReactElement, useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, Linking, Platform } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { InitialState, NavigationContainer } from '@react-navigation/native';
+import 'react-native-gesture-handler';
+
 // import * as Font from 'expo-font';
 // import { AppLoading } from 'expo';
 // import { Asset } from 'expo-asset';

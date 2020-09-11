@@ -22,7 +22,10 @@
 		B74E9BD224FF98690036797A /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B74E9BCF24FF98690036797A /* SF-Pro-Text-Bold.otf */; };
 		B74E9BD324FF98690036797A /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B74E9BD024FF98690036797A /* SF-Pro-Text-Regular.otf */; };
 		B74E9BD424FF98690036797A /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B74E9BD124FF98690036797A /* SF-Pro-Text-Semibold.otf */; };
+		B79C503A2508B2EF0074DDAB /* assets in Resources */ = {isa = PBXBuildFile; fileRef = B79C50392508B2EF0074DDAB /* assets */; };
 		B7E4168D25078F1100230583 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = B7E4168C25078F1100230583 /* main.jsbundle */; };
+		B7E903C3250B7CF60063FC5D /* liblottie-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E903C2250B7CF60063FC5D /* liblottie-ios.a */; };
+		B7E903C5250B7D020063FC5D /* liblottie-react-native.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E903C4250B7D020063FC5D /* liblottie-react-native.a */; };
 		FF45DA6B4E02498F0C52D182 /* libPods-FashionApp-FashionAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC28BE454F9C253970553379 /* libPods-FashionApp-FashionAppTests.a */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +69,10 @@
 		B74E9BCF24FF98690036797A /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Text-Bold.otf"; path = "../../src/assets/fonts/SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
 		B74E9BD024FF98690036797A /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Text-Regular.otf"; path = "../../src/assets/fonts/SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		B74E9BD124FF98690036797A /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Text-Semibold.otf"; path = "../../src/assets/fonts/SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		B79C50392508B2EF0074DDAB /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		B7E4168C25078F1100230583 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		B7E903C2250B7CF60063FC5D /* liblottie-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "liblottie-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7E903C4250B7D020063FC5D /* liblottie-react-native.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "liblottie-react-native.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C08ECD7D0260D653A0D97EF0 /* libPods-FashionApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FashionApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D445A374937B7F2B57AF9F7F /* Pods-FashionApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionApp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-FashionApp-tvOSTests/Pods-FashionApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D8A0D291E85645F34A798C06 /* Pods-FashionApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionApp.release.xcconfig"; path = "Target Support Files/Pods-FashionApp/Pods-FashionApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +95,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7E903C5250B7D020063FC5D /* liblottie-react-native.a in Frameworks */,
+				B7E903C3250B7CF60063FC5D /* liblottie-ios.a in Frameworks */,
 				140FB0234918FA8343B9F658 /* libPods-FashionApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +154,8 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B7E903C4250B7D020063FC5D /* liblottie-react-native.a */,
+				B7E903C2250B7CF60063FC5D /* liblottie-ios.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				C08ECD7D0260D653A0D97EF0 /* libPods-FashionApp.a */,
@@ -181,6 +191,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				B79C50392508B2EF0074DDAB /* assets */,
 				B74E9BD524FF991C0036797A /* font */,
 				13B07FAE1A68108700A75B9A /* FashionApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -360,6 +371,7 @@
 			files = (
 				B7E4168D25078F1100230583 /* main.jsbundle in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				B79C503A2508B2EF0074DDAB /* assets in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				B74E9BD424FF98690036797A /* SF-Pro-Text-Semibold.otf in Resources */,
 				B74E9BD324FF98690036797A /* SF-Pro-Text-Regular.otf in Resources */,
