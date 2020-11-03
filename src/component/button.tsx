@@ -1,9 +1,10 @@
 /* eslint-disable react-native/no-color-literals */
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { useTheme } from '@shopify/restyle';
-import { Theme } from '@react-navigation/native';
+import { Theme, Text } from './theme';
+
 
 const { width, height } = Dimensions.get('screen');
 
@@ -22,7 +23,7 @@ const Button = ({ variant, label, onPress } : SubSliderProps) => {
 
   return (
     <RectButton style={[styles.container, { backgroundColor }]} {...{ onPress }}>
-      <Text style={[styles.label, { color }]}>{ label }</Text>
+      <Text variant='button' style={{ color }}>{ label }</Text>
     </RectButton>
   );
 };
@@ -38,12 +39,12 @@ const styles = StyleSheet.create({
     height: 50,
     width: 245,
   },
-  label: {
-    fontSize: 15,
-    fontFamily: 'SFProText-Semibold',
-    color: '#0c0d34',
-    textAlign: 'center',
-  },
+  // label: {
+  //   fontSize: 15,
+  //   fontFamily: 'SFProText-Semibold',
+  //   color: '#0c0d34',
+  //   textAlign: 'center',
+  // },
   
 });
 

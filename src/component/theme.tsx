@@ -8,6 +8,7 @@ const theme : BaseTheme = createTheme({
     text: 'rgba(12, 13, 52, 0.7)',
     body: 'rgba(12, 13, 52, 0.05)',
     white: 'white',
+    grey: 'rgba(12, 13, 52, 0.05)',
   },
   spacing: {
     s: 8,
@@ -41,6 +42,9 @@ const theme : BaseTheme = createTheme({
       color: 'body',
       textAlign: 'center',
     },
+    button: {
+      
+    }
   },
   breakpoints: {
 

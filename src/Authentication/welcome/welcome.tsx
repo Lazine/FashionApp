@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-color-literals */
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Dimensions, Animated, Easing, TouchableOpacity } from 'react-native';
+import { ThemeProvider } from '@shopify/restyle';
 import Button from '../../component/button';
 import LottieView from 'lottie-react-native';
 import animationData from './animation.json';
@@ -22,7 +23,6 @@ interface WelcomeProps {
 
 const Welcome = ({ navigation }) => {
   // const [progress] = useState(new Animated.Value(0));
-  const LootieRef = useRef(null);
   const LootieRef2 = useRef(null);
 
   const defaultOptions = {
@@ -31,19 +31,12 @@ const Welcome = ({ navigation }) => {
   };
 
   useEffect(() => {
-    LootieRef.current.play();
     LootieRef2.current.play();
   }, []);
 
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <LottieView 
-        ref={LootieRef}
-        source={require('./7148-the-nyan-cat.json')} 
-        height={400} 
-        width={400}
-      />
       <Button style={styles.button} label='press' onPress={() => navigation.navigate('Onboarding')}/>
       <LottieView 
         ref={LootieRef2}

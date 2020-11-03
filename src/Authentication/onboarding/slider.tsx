@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-color-literals */
 import React from 'react';
-import { View, StyleSheet, Dimensions, Image } from 'react-native';
+import { View, StyleSheet, Dimensions, Image, ImageRequireSource } from 'react-native';
+// import { color } from 'react-native-reanimated';
 import { Text } from '../../component';
 
 const { width, height } = Dimensions.get('screen');
@@ -10,10 +11,14 @@ export const BORDER_RADIUS = 75;
 interface SliderProps {
   title: string;
   right?: boolean | number;
-  picture: string;
+  picture: {
+    src: ImageRequireSource;
+    width: number;
+    height: number;
+  };
 }
 
-const Slider = ({ title, right, picture } : SliderProps) => {
+const Slider = ({ title, right } : SliderProps) => {
   const transform = [
     { translateY: ( SLIDER_HEIGHT - 100) / 2  },
     { translateX: right ? width / 2 - 50 : - width / 2 + 50 },
@@ -21,9 +26,6 @@ const Slider = ({ title, right, picture } : SliderProps) => {
   ];
   return (
     <View style={styles.container}>
-      <View style={styles.underlay}>
-        <Image source={picture} style={styles.picture} />
-      </View>
       <View style={[styles.titleContainer, { transform }]}>
         <Text variant="hero">{ title }</Text>
       </View>
@@ -48,17 +50,6 @@ const styles = StyleSheet.create({
     fontFamily: 'SFProText-Semibold',
     color: '#fff',
     textAlign: 'center',
-  },
-  underlay: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'flex-end',
-  },
-  picture: {
-    ...StyleSheet.absoluteFillObject,
-    // top: BORDER_RADIUS,
-    width: undefined,
-    height: undefined,
-    borderBottomRightRadius: BORDER_RADIUS,
   },
 });
 

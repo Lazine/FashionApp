@@ -22,7 +22,7 @@ const AuthenticationStack = createStackNavigator();
 const AuthenticationNavigator = () => {
   return(
       <AuthenticationStack.Navigator
-        initialRouteName='Welcome'
+        initialRouteName='Onboarding'
         screenOptions={{headerShown:false}}>
         <AuthenticationStack.Screen 
           name='Welcome' 

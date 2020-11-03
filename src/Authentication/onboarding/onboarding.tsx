@@ -1,12 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-native/no-color-literals */
 import React, { useRef } from 'react';
-import { View, ScrollView, StyleSheet, Dimensions, Text } from 'react-native';
+import { View, Image, StyleSheet, Dimensions, Text } from 'react-native';
 import Slider, { SLIDER_HEIGHT, BORDER_RADIUS } from './slider';
 import SubSlider from './subslide';
 import Dot from './dot';
 import { useValue, onScrollEvent, interpolateColor, useScrollHandler } from 'react-native-redash';
-import Animated, { multiply, divide } from 'react-native-reanimated';
+import Animated, { multiply, divide, interpolate, Extrapolate } from 'react-native-reanimated';
 
 const { width, height } = Dimensions.get('window');
 // const BORDER_RADIUS = 75;
@@ -16,28 +16,44 @@ const slides = [
     subTitle: 'Find Your Outfit', 
     info: "Confused about your outfits? Don't worry ! Find the best outfit.",
     color: '#bfeaf5',
-    picture: require('../../../pic/1.png'),
+    picture: {
+      src: require('../../../pic/1.png'),
+      width: 2213,
+      height: 3683,
+    },
   },
   { 
     title: 'Playful', 
     subTitle: 'Hear it first. Wear it first.',
     info: 'Hating the clothes in your wardrobe? Explore hundreds of outfit idea.',
     color: '#beecc4',
-    picture: require('../../../pic/2.png'),
+    picture: {
+      src: require('../../../pic/2.png'),
+      width: 2400,
+      height: 3844,
+    },
   },
   { 
     title: 'excentric',
     subTitle: 'Your Style, Your Way.',
     info: 'Create your individual & unique style and look amazing everyday',
     color: '#ffe4d9',
-    picture: require('../../../pic/3.png'),
+    picture: {
+      src: require('../../../pic/3.png'),
+      width: 2782,
+      height: 4640,
+    },
   },
   { 
     title: 'funky', 
     subTitle: 'Look good, Feel good.',
     info: 'over the latest trends in fashion and explore your personalty',
     color: '#ffdddd',
-    picture: require('../../../pic/4.png'),
+    picture: {
+      src: require('../../../pic/4.png'),
+      width: 1757,
+      height: 2900,
+    },
   },
 ]
 
@@ -71,6 +87,25 @@ const Onboarding = () => {
   return (
     <View style={styles.container}>
       <Animated.View style={[styles.slider, { backgroundColor } /* backgroundColor: interpolatedColor */ ]}>
+        {slides.map(({ picture }, index) => {
+          const opacity = interpolate(x, {
+            inputRange: [(index-1)* width, index * width, (index+1)*width],
+            outputRange: [0, 1, 0],
+            extrapolate: Extrapolate.CLAMP,
+          });
+          return (
+            <Animated.View style={[styles.underlay, { opacity }]} key={index}>
+              <Image 
+                source={picture.src} 
+                style={{
+                  ...StyleSheet.absoluteFillObject, 
+                  width: width, 
+                  height: (width - BORDER_RADIUS) * picture.height / picture.width,
+                }} />
+              </Animated.View>
+          );
+        })}
+        
         <Animated.ScrollView 
           ref={ ScrollRef }
           horizontal 
@@ -90,7 +125,7 @@ const Onboarding = () => {
 
       <View style={styles.footer}>
         <Animated.View 
-          style={{ ...StyleSheet.absoluteFillObject, backgroundColor }}
+          style={[{...StyleSheet.absoluteFillObject}, { backgroundColor }]}
         />
         <Animated.View style={styles.footerContent}>
           <View style={styles.pagination}>
@@ -154,7 +189,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-  }
+  },
+  underlay: {
+    ...StyleSheet.absoluteFillObject,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    borderBottomRightRadius: BORDER_RADIUS,
+  },
   // absoluteFillObject: {
   //   position: 'absolute',
   //   top: 0,
