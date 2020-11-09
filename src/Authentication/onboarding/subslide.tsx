@@ -14,20 +14,23 @@ interface SubSliderProps {
   onPress: () => void;
 }
 
-const SubSlider = ({ subTitle, info, last, onPress } : SubSliderProps) => {
+const SubSlider = ({ subTitle, info, last, onPress }: SubSliderProps) => {
   return (
     <View style={styles.container}>
-      <Text variant='title2' style={styles.subTitle}>{ subTitle }</Text>
-      <Text variant='body' style={styles.description}>{ info }</Text>
-      <Button 
-        label={ last ? "Let's get Start!" : "next"} 
-        variant={ last ? "primary" : "default"} 
-        {...{ onPress }} 
+      <Text variant="title2" style={styles.subTitle}>
+        {subTitle}
+      </Text>
+      <Text variant="body" style={styles.description}>
+        {info}
+      </Text>
+      <Button
+        label={last ? "Let's get Start!" : 'next'}
+        variant={last ? 'primary' : 'default'}
+        {...{ onPress }}
       />
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -53,8 +56,7 @@ const styles = StyleSheet.create({
     color: '#0c0d34',
     textAlign: 'center',
     marginBottom: 40,
-  }
+  },
 });
-
 
 export default SubSlider;

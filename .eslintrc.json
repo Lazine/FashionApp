@@ -1,6 +1,8 @@
 {
   "env": {
 		"browser": true,
+		"jasmine": true,
+		"jest": true,
 		"commonjs": true,
 		"es6": true,
 		"node": true
@@ -12,7 +14,9 @@
 	"extends": [
 		"eslint:recommended",
     "plugin:react/recommended",
-		"plugin:@typescript-eslint/recommended"
+		"plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
 	],
 	"parserOptions": {
 		"ecmaFeatures": {
@@ -21,12 +25,21 @@
 		},
 		"sourceType": "module"
 	},
+	// "eslint.validate": [ "javascript", "javascriptreact", "html", "typescriptreact","typescript" ],
 	"plugins": [
 		"react",
 		"react-native",
-		"@typescript-eslint"
+		"@typescript-eslint",
+		"prettier"
 	],
+	"settings":  {
+    "react":  {
+			"pragma": "React",
+      "version":  "detect"  // Tells eslint-plugin-react to automatically detect the version of React to use
+    }
+  },
 	"rules": {
+		"prettier/prettier": ["error", {"singleQuote": true }],
 		"curly": "error",
 		"eqeqeq": "error",
 		"indent": [
@@ -41,7 +54,7 @@
 			"unix"
 		],
 		"quotes": [
-			false,
+			"error",
 			"single"
 		],
 		"semi": [
@@ -54,9 +67,8 @@
 		"arrow-spacing": ["error", { "before": true, "after": true }],
     "react-native/no-unused-styles": "error",
     "react-native/split-platform-components": 0,
-    "react-native/no-inline-styles": "error",
-		"react-native/no-color-literals": "error"
+    "react-native/no-inline-styles": 0,
+		"react-native/no-color-literals": 0
 	},
   "root": true
-  // "extends": 'react-native-community',
 }

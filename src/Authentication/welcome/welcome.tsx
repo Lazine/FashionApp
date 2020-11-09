@@ -1,13 +1,20 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-unused-styles */
 /* eslint-disable react-native/no-color-literals */
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Dimensions, Animated, Easing, TouchableOpacity } from 'react-native';
-import { ThemeProvider } from '@shopify/restyle';
-import Button from '../../component/button';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  Animated,
+  Easing,
+  TouchableOpacity,
+} from 'react-native';
 import LottieView from 'lottie-react-native';
-import animationData from './animation.json';
-import { translateZ } from 'react-native-redash';
-// import { Button } from '../../component';
-// import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Button } from '../../component';
+import { Box } from '../../component/theme';
+import theme from '../../component/theme';
 
 const { width, height } = Dimensions.get('screen');
 export const SLIDER_HEIGHT = 0.61 * height;
@@ -20,35 +27,80 @@ interface WelcomeProps {
   play: () => void;
 }
 
+const picture = {
+  src: require('./7148-the-nyan-cat.json'),
+  width: 300,
+  height: 400,
+};
+
+export const assets = [picture.src];
 
 const Welcome = ({ navigation }) => {
-  // const [progress] = useState(new Animated.Value(0));
   const LootieRef2 = useRef(null);
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-  };
+  // const defaultOptions = {
+  //   loop: true,
+  //   autoplay: true,
+  // };
 
   useEffect(() => {
     LootieRef2.current.play();
   }, []);
 
-
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Button style={styles.button} label='press' onPress={() => navigation.navigate('Onboarding')}/>
-      <LottieView 
-        ref={LootieRef2}
-        source={require('./7148-the-nyan-cat.json')} 
-        style={{ marginTop: 150, }}
-        height={400} 
-        width={400}
-      />
-    </View>
+    <Box flex={1} backgroundColor='white'> 
+      <Box flex={1} borderBottomRightRadius='xl' backgroundColor='grey'>
+        <LottieView
+          ref={LootieRef2}
+          source={picture.src}
+          style={{
+            ...StyleSheet.absoluteFillObject,
+            width: width,
+            height:
+              ((width - theme.borderRadii.xl) * picture.height) / picture.width,
+          }}
+        />
+      </Box>
+      <Box flex={1} borderTopLeftRadius='xl' backgroundColor='white' >
+        <Box
+          backgroundColor='grey'
+          position='absolute'
+          top={0}
+          left={0}
+          right={0}
+          bottom={0}
+        />
+        <Box
+          backgroundColor='white'
+          borderTopLeftRadius='xl'
+          justifyContent='space-evenly'
+          alignItems='center'
+          flex={1}
+          padding='xl'
+        >
+          <Text variant='title2' style={styles.subTitle}>
+            Let's get start
+          </Text>
+          <Text variant='body' style={styles.description}>
+            Login to your account below or signup for an amazing experience.
+          </Text>
+          <Button
+            label='Have an account? Login'
+            variant='primary'
+          />
+          <Button
+            label="Join us. It's free"
+            variant='default'
+          />
+          <Button
+            label="forget passwords?"
+            variant='transparent'
+          />
+        </Box>
+      </Box>
+    </Box>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -58,12 +110,22 @@ const styles = StyleSheet.create({
     padding: 24,
     borderTopLeftRadius: 75,
   },
-  button: {
-    width: 100,
-    height: 60,
-    backgroundColor: 'red',
-  }
+  subTitle: {
+    fontSize: 24,
+    lineHeight: 30,
+    fontFamily: 'SFProText-Semibold',
+    color: '#0c0d34',
+    textAlign: 'center',
+    marginBottom: 12,
+  },
+  description: {
+    fontSize: 16,
+    lineHeight: 24,
+    fontFamily: 'SFProText-Regular',
+    color: '#0c0d34',
+    textAlign: 'center',
+    marginBottom: 40,
+  },
 });
-
 
 export default Welcome;

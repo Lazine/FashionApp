@@ -1,12 +1,19 @@
+/* eslint-disable react-native/no-unused-styles */
 /* eslint-disable react-native/no-color-literals */
 import React from 'react';
-import { View, StyleSheet, Dimensions, Image, ImageRequireSource } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Dimensions,
+  Image,
+  ImageRequireSource,
+} from 'react-native';
 // import { color } from 'react-native-reanimated';
 import { Text } from '../../component';
 
 const { width, height } = Dimensions.get('screen');
 export const SLIDER_HEIGHT = 0.61 * height;
-export const BORDER_RADIUS = 75;
+// export const BORDER_RADIUS = 75;
 
 interface SliderProps {
   title: string;
@@ -18,21 +25,20 @@ interface SliderProps {
   };
 }
 
-const Slider = ({ title, right } : SliderProps) => {
+const Slider = ({ title, right }: SliderProps) => {
   const transform = [
-    { translateY: ( SLIDER_HEIGHT - 100) / 2  },
-    { translateX: right ? width / 2 - 50 : - width / 2 + 50 },
-    { rotate: right ? '-90deg' : '90deg' }
+    { translateY: (SLIDER_HEIGHT - 100) / 2 },
+    { translateX: right ? width / 2 - 50 : -width / 2 + 50 },
+    { rotate: right ? '-90deg' : '90deg' },
   ];
   return (
     <View style={styles.container}>
       <View style={[styles.titleContainer, { transform }]}>
-        <Text variant="hero">{ title }</Text>
+        <Text variant="hero">{title}</Text>
       </View>
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -52,6 +58,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-
 
 export default Slider;
