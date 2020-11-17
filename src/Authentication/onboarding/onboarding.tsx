@@ -24,8 +24,8 @@ const slides = [
     color: '#bfeaf5',
     picture: {
       src: require('../../../pic/1.png'),
-      width: 2213,
-      height: 3683,
+      width: 2113,
+      height: 2883,
     },
   },
   {
@@ -36,8 +36,8 @@ const slides = [
     color: '#beecc4',
     picture: {
       src: require('../../../pic/2.png'),
-      width: 2400,
-      height: 3844,
+      width: 1560,
+      height: 2044,
     },
   },
   {
@@ -47,8 +47,8 @@ const slides = [
     color: '#ffe4d9',
     picture: {
       src: require('../../../pic/3.png'),
-      width: 2782,
-      height: 4640,
+      width: 2482,
+      height: 4140,
     },
   },
   {
@@ -58,8 +58,8 @@ const slides = [
     color: '#ffdddd',
     picture: {
       src: require('../../../pic/4.png'),
-      width: 1757,
-      height: 2900,
+      width: 1587,
+      height: 2690,
     },
   },
 ];
@@ -117,6 +117,7 @@ const Onboarding = ({ navigation }) => {
                   height:
                     ((width - theme.borderRadii.xl) * picture.height) /
                     picture.width,
+                  alignSelf: 'center',
                 }}
               />
             </Animated.View>
@@ -215,10 +216,11 @@ const styles = StyleSheet.create({
   },
   pagination: {
     ...StyleSheet.absoluteFillObject,
-    height: theme.borderRadii.xl,
+    // paddingTop: theme.spacing.m,
+    height: theme.borderRadii.l,
     // width,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-end',
     flexDirection: 'row',
   },
   // absoluteFillObject: {

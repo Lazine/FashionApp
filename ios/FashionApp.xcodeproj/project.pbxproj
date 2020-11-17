@@ -18,12 +18,11 @@
 		2DCD954D1E0B4F2C00145EB5 /* FashionAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* FashionAppTests.m */; };
 		385C72A8A56CAFCBF43785E2 /* libPods-FashionApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB1D8A2529447AA6D5E82792 /* libPods-FashionApp-tvOSTests.a */; };
 		7A6A063EEDB98701A5589AA8 /* libPods-FashionApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 463C6AB950C0CFB51BDCA260 /* libPods-FashionApp-tvOS.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		B741504F2563B02F00A79E51 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = B7E4168C25078F1100230583 /* main.jsbundle */; };
 		B74E9BD224FF98690036797A /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B74E9BCF24FF98690036797A /* SF-Pro-Text-Bold.otf */; };
 		B74E9BD324FF98690036797A /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B74E9BD024FF98690036797A /* SF-Pro-Text-Regular.otf */; };
 		B74E9BD424FF98690036797A /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B74E9BD124FF98690036797A /* SF-Pro-Text-Semibold.otf */; };
-		B79C503A2508B2EF0074DDAB /* assets in Resources */ = {isa = PBXBuildFile; fileRef = B79C50392508B2EF0074DDAB /* assets */; };
-		B7E4168D25078F1100230583 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = B7E4168C25078F1100230583 /* main.jsbundle */; };
+		B757DEB52559526B005CECBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B7E903C3250B7CF60063FC5D /* liblottie-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E903C2250B7CF60063FC5D /* liblottie-ios.a */; };
 		B7E903C5250B7D020063FC5D /* liblottie-react-native.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E903C4250B7D020063FC5D /* liblottie-react-native.a */; };
 		FF45DA6B4E02498F0C52D182 /* libPods-FashionApp-FashionAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC28BE454F9C253970553379 /* libPods-FashionApp-FashionAppTests.a */; };
@@ -69,7 +68,6 @@
 		B74E9BCF24FF98690036797A /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Text-Bold.otf"; path = "../../src/assets/fonts/SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
 		B74E9BD024FF98690036797A /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Text-Regular.otf"; path = "../../src/assets/fonts/SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		B74E9BD124FF98690036797A /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Text-Semibold.otf"; path = "../../src/assets/fonts/SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
-		B79C50392508B2EF0074DDAB /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		B7E4168C25078F1100230583 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		B7E903C2250B7CF60063FC5D /* liblottie-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "liblottie-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7E903C4250B7D020063FC5D /* liblottie-react-native.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "liblottie-react-native.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,7 +189,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				B79C50392508B2EF0074DDAB /* assets */,
 				B74E9BD524FF991C0036797A /* font */,
 				13B07FAE1A68108700A75B9A /* FashionApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -369,9 +366,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7E4168D25078F1100230583 /* main.jsbundle in Resources */,
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				B79C503A2508B2EF0074DDAB /* assets in Resources */,
+				B741504F2563B02F00A79E51 /* main.jsbundle in Resources */,
+				B757DEB52559526B005CECBD /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				B74E9BD424FF98690036797A /* SF-Pro-Text-Semibold.otf in Resources */,
 				B74E9BD324FF98690036797A /* SF-Pro-Text-Regular.otf in Resources */,
@@ -408,7 +404,7 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
+			shellPath = /bin/zsh;
 			shellScript = "cd $PROJECT_DIR/..\nexport NODE_BINARY=node ../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		26E6AEA63EF4E00DB6B46BB2 /* [CP] Check Pods Manifest.lock */ = {
@@ -692,6 +688,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KNBN33CW2R;
 				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = FashionApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -715,8 +712,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KNBN33CW2R;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = FashionApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

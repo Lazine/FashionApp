@@ -27,7 +27,7 @@ const dot = ({ index, currentIndex }: DotProps) => {
       style={{
         opacity,
         transform: [{ scale }],
-        backgroundColor: '#2cb9b0',
+        backgroundColor: 'rgba(12, 13, 52, 0.3)',
         width: 8,
         height: 8,
         borderRadius: 4,

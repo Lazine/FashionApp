@@ -76,7 +76,9 @@ const Welcome = ({ navigation }) => {
           justifyContent='space-evenly'
           alignItems='center'
           flex={1}
-          padding='xl'
+          paddingTop='xl'
+          paddingHorizontal='xl'
+          paddingBottom='l'
         >
           <Text variant='title2' style={styles.subTitle}>
             Let's get start
@@ -85,16 +87,19 @@ const Welcome = ({ navigation }) => {
             Login to your account below or signup for an amazing experience.
           </Text>
           <Button
-            label='Have an account? Login'
             variant='primary'
+            label="Have an account? Login"
+            onPress={() => navigation.navigate('Login')}
           />
           <Button
-            label="Join us. It's free"
             variant='default'
+            label="Join us. It's free"
+            onPress={() => navigation.navigate('Onboarding')}
           />
           <Button
-            label="forget passwords?"
             variant='transparent'
+            label="forget passwords?"
+            onPress={() => navigation.goBack()}
           />
         </Box>
       </Box>
@@ -124,7 +129,7 @@ const styles = StyleSheet.create({
     fontFamily: 'SFProText-Regular',
     color: '#0c0d34',
     textAlign: 'center',
-    marginBottom: 40,
+    marginBottom: 30,
   },
 });
 

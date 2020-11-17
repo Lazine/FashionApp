@@ -4,15 +4,13 @@
  */
 
 import * as React from 'react';
-// import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+// import { createStackNavigator } from '@react-navigation/stack';
 import {
-  Onboarding,
-  Welcome,
   assets as authenticationAssets,
+  AuthenticationNavigator,
 } from './Authentication';
 import { LoadAssets, theme } from './component';
-import { ThemeProvider, createBox, createText } from '@shopify/restyle';
+import { ThemeProvider } from '@shopify/restyle';
 import { Routes } from './component/routes';
 
 const fonts = {
@@ -22,28 +20,6 @@ const fonts = {
 };
 
 const assets = [...authenticationAssets];
-
-const AuthenticationStack = createStackNavigator<Routes>();
-
-const AuthenticationNavigator = () => {
-  return (
-    <AuthenticationStack.Navigator
-      initialRouteName="Onboarding"
-      screenOptions={{ headerShown: false }}
-    >
-      <AuthenticationStack.Screen
-        name="Welcome"
-        component={Welcome}
-        options={{ headerShown: false }}
-      />
-      <AuthenticationStack.Screen
-        name="Onboarding"
-        component={Onboarding}
-        options={{ headerShown: false }}
-      />
-    </AuthenticationStack.Navigator>
-  );
-};
 
 const App = () => {
   return (

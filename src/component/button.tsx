@@ -9,13 +9,13 @@ const { width, height } = Dimensions.get('screen');
 
 // const restyleFunction = [ color, backgroundColor];
 
-interface SubSliderProps {
+interface ButtonProps {
   variant: 'primary' | 'default' | 'transparent';
   label: string;
   onPress: () => void;
 }
 
-const Button = ({ variant, label, onPress }: SubSliderProps) => {
+const Button = ({ variant, label, onPress }: ButtonProps) => {
   const theme = useTheme<Theme>();
   const backgroundColor =
     variant === 'primary'
@@ -45,9 +45,10 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 25,
-    height: 50,
+    borderRadius: 22,
+    height: 44,
     width: 245,
+    marginBottom: 15,
   },
   // label: {
   //   fontSize: 15,
