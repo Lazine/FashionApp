@@ -216,7 +216,6 @@ const styles = StyleSheet.create({
   },
   pagination: {
     ...StyleSheet.absoluteFillObject,
-    // paddingTop: theme.spacing.m,
     height: theme.borderRadii.l,
     // width,
     justifyContent: 'center',

@@ -1,9 +1,9 @@
 /* eslint-disable react-native/no-color-literals */
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { StyleSheet, Dimensions } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { useTheme } from '@shopify/restyle';
-import { Theme, Text } from './theme';
+import { theme, Text } from './theme';
 
 const { width, height } = Dimensions.get('screen');
 
@@ -13,28 +13,33 @@ interface ButtonProps {
   variant: 'primary' | 'default' | 'transparent';
   label: string;
   onPress: () => void;
+  children?: ReactNode;
 }
 
-const Button = ({ variant, label, onPress }: ButtonProps) => {
+const Button = ({ variant, label, onPress, children }: ButtonProps) => {
   const theme = useTheme<Theme>();
   const backgroundColor =
     variant === 'primary'
       ? theme.colors.primary
       : variant === 'transparent'
-        ? 'transparent'
-        : theme.colors.body;
+      ? 'transparent'
+      : theme.colors.grey;
 
   const color =
-    variant === 'primary' ? theme.colors.white : theme.colors.button;
+    variant === 'primary' ? theme.colors.white : theme.colors.secondary;
 
   return (
     <RectButton
       style={[styles.container, { backgroundColor }]}
       {...{ onPress }}
     >
-      <Text variant="button" style={{ color }}>
-        {label}
-      </Text>
+      {children ? (
+        children
+      ) : (
+        <Text variant="button" style={{ color }}>
+          {label}
+        </Text>
+      )}
     </RectButton>
   );
 };
@@ -50,12 +55,6 @@ const styles = StyleSheet.create({
     width: 245,
     marginBottom: 15,
   },
-  // label: {
-  //   fontSize: 15,
-  //   fontFamily: 'SFProText-Semibold',
-  //   color: '#0c0d34',
-  //   textAlign: 'center',
-  // },
 });
 
 export default Button;

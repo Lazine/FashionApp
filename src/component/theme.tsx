@@ -8,14 +8,13 @@ import {
 const theme: BaseTheme = createTheme({
   colors: {
     primary: '#2cb9b0',
-    title: '#0c0d34',
+    secondary: '#0c0d34',
+    danger: '#ff0058',
     text: 'rgba(12, 13, 52, 0.7)',
-    body: 'rgba(12, 13, 52, 0.05)',
-    button: '#0c0d34',
     transparent: 'rgba(12, 13, 52, 0)',
     white: 'white',
-    grey: 'rgba(12, 13, 52, 0.05)',
-    'slide.grey': '#f4f0ef',
+    grey: '#f4f0ef',
+    darkGrey: '#8a8d90',
   },
   spacing: {
     s: 8,
@@ -40,19 +39,19 @@ const theme: BaseTheme = createTheme({
     title1: {
       fontSize: 28,
       fontFamily: 'SFProText-Semibold',
-      color: 'title',
+      color: 'secondary',
     },
     title2: {
       fontSize: 28,
       lineHeight: 30,
       fontFamily: 'SFProText-Semibold',
-      colo: 'title',
+      color: 'secondary',
     },
     body: {
       fontSize: 16,
       lineHeight: 24,
       fontFamily: 'SFProText-Regular',
-      color: 'body',
+      color: 'text',
       textAlign: 'center',
     },
     button: {
@@ -61,7 +60,7 @@ const theme: BaseTheme = createTheme({
       color: 'text',
     },
   },
-  breakpoints: {},
+  // breakpoints: {},
 });
 
 export type Theme = typeof theme;
