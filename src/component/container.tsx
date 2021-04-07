@@ -2,9 +2,7 @@
 /* eslint-disable react-native/no-color-literals */
 import React, { ReactNode } from 'react';
 import { StyleSheet, Dimensions, Image, StatusBar } from 'react-native';
-import { useTheme } from '@shopify/restyle';
-// import { Button } from './button';
-import { theme, Text, Box } from './theme';
+import { theme, Box } from '../component';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const assets = [require('./assets/patterns/00.jpg')];
@@ -18,13 +16,12 @@ interface ContainerProps {
 }
 
 const Container = ({ footer, children }: ContainerProps) => {
-  const theme = useTheme<Theme>();
   const insets = useSafeAreaInsets();
 
   return (
     <Box flex={1} backgroundColor="white">
       <StatusBar barStyle="light-content" />
-      <Box borderBottomLeftRadius="l" overflow="hidden" height={200}>
+      <Box borderBottomLeftRadius="xl" overflow="hidden" height={200}>
         <Image
           source={assets[0]}
           style={{
@@ -49,12 +46,12 @@ const Container = ({ footer, children }: ContainerProps) => {
           borderTopLeftRadius={0}
           backgroundColor="white"
           flex={1}
-          alignItems="center"
+          // alignItems="center"
         >
           {children}
         </Box>
       </Box>
-      <Box backgroundColor="secondary" paddingTop="s" alignItems="center">
+      <Box backgroundColor="secondary" paddingTop="xl" alignItems="center">
         {footer}
         <Box height={insets.bottom} />
       </Box>

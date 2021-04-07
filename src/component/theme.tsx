@@ -12,9 +12,9 @@ const theme: BaseTheme = createTheme({
     danger: '#ff0058',
     text: 'rgba(12, 13, 52, 0.7)',
     transparent: 'rgba(12, 13, 52, 0)',
-    white: 'white',
+    white: '#fff',
+    // darkGrey: '#8a8d90',
     grey: '#f4f0ef',
-    darkGrey: '#8a8d90',
   },
   spacing: {
     s: 8,

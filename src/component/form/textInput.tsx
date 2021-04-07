@@ -1,24 +1,40 @@
 import React, { useState } from 'react';
-import { TextInput as RNTextInput } from 'react-native';
-import { Box, theme } from '../../component/theme';
-import { Feather as Icon } from 'react-native-vector-icons/Feather';
+import {
+  StyleSheet,
+  TextInputProps as RNTextInputProps,
+  TextInput as RNTextInput,
+} from 'react-native';
+import { Box, theme } from '../../component';
+import Icon from 'react-native-vector-icons/Feather';
 
-interface TextInputProps {
+interface TextInputProps extends RNTextInputProps {
   icon: string;
-  placeholder: string;
-  validator: (input: string) => boolean;
+  // validator: (input: string) => boolean;
 }
 
+const SIZE = theme.borderRadii.m * 2;
 const Valid = true;
 const Invalid = false;
 const Pristine = null;
 
 type InputState = typeof Valid | typeof Invalid | typeof Pristine;
 
-export const TextInput = ({ icon } : TextInputProps) => {
-  
+const TextInput = ({ icon, ...props }: TextInputProps) => {
+  const [input, setInput] = useState('');
   const [state, setState] = useState<InputState>(Pristine);
-  const color = (state === Pristine) ? 'darkGrey' : state === Valid ? 'primary' : 'danger';
+  const reColor: keyof typeof theme.colors =
+    state === Pristine ? 'text' : state === Valid ? 'primary' : 'danger';
+  const color = theme.colors[reColor];
+  const onChangeText = (text: string) => {
+    setInput(text);
+    if (state !== Pristine) {
+      validate();
+    }
+  };
+  const validate = () => {
+    const valid = validator(input);
+    setState(valid);
+  };
 
   return (
     <Box
@@ -26,25 +42,41 @@ export const TextInput = ({ icon } : TextInputProps) => {
       height={48}
       alignItems="center"
       borderRadius="s"
-      borderWidth={1}
-      borderColor={color}
+      borderWidth={StyleSheet.hairlineWidth}
+      borderColor={reColor}
+      padding="s"
     >
       <Box padding="s">
-        <Icon name={icon} size={16} {...color} />
+        <Icon name={icon} size={16} {...{ color }} />
       </Box>
-      <RNTextInput
-        underlineColorAndroid="transparent"
-        placeholderTextColor="#151624"
-        {...{ placeholder }}
-      />
+      <Box flex={1}>
+        <RNTextInput
+          underlineColorAndroid="transparent"
+          placeholderTextColor={color}
+          autoCorrect={false}
+          onBlur={validate}
+          {...{ onChangeText }}
+          {...props}
+        />
+      </Box>
       {(state === Valid || state === Invalid) && (
-        <Box height={theme.borderRadii.xl} borderRadius="m">
-          <Icon name={state === Valid ? 'check' : 'x'} color="#fff" />
+        <Box
+          height={SIZE}
+          width={SIZE}
+          borderRadius="m"
+          justifyContent="center"
+          alignItems="center"
+          backgroundColor={state === Valid ? 'primary' : 'danger'}
+        >
+          <Icon
+            name={state === Valid ? 'check' : 'x'}
+            color="white"
+            size={16}
+          />
         </Box>
       )}
-      <Icon name={'eye'} size={30} color="#151624" />
     </Box>
   );
 };
 
-// export default TextInput;
+export default TextInput;

@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { View, Text } from 'react-native';
 import { Container, Button } from '../../component';
-import theme, { Box } from '../../component/theme';
+import { theme, Box } from '../../component';
 import Svg, { Path } from 'react-native-svg';
 
 // interface SocialLoginProps {

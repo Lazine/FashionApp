@@ -1,14 +1,9 @@
-import React, { createRef, useEffect, useRef } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  Animated,
-  TouchableWithoutFeedback,
-  StyleSheet,
-} from 'react-native';
-import { Container, Button, Box } from '../../component';
+/* eslint-disable no-useless-escape */
+import React from 'react';
+import { Container, Button, Box, Text } from '../../component';
 import SocialLogin from './socialLogin';
+import TextInput from '../../component/form/textInput';
+import CheckBox from '../../component/form/checkBox';
 
 interface LoginProps {
   subTitle: string;
@@ -18,70 +13,68 @@ interface LoginProps {
   goBack: () => void;
 }
 
-const emailValidator = (email: string) => {
-  // /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+[^<>()\.,;:\s@\"]{2,})$/;
-  /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
-};
+const emailValidator = (email: string) =>
+  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+[^<>()\.,;:\s@\"]{2,})$/.test(
+    email
+  );
 
-const Login = ({ navigation }) => {
-  // const animationVariable = useRef(new Animated.Value(0)).current;
+const passwordValidator = (password: string) => password.length > 6;
 
-  // const runAnimationOnClick = () => {
-  //   scaleValue.current = scaleValue.current === 0 ? 1 : 0;
-  //   Animated.spring(animationValue, {
-  //     toValue: scaleValue.current,
-  //     useNativeDriver: true,
-  //   }).start();
-  // };
-
+const Login = ({navigation}) => {
   const footer = (
     <>
       <SocialLogin />
-      <Button variant="transparent" onPress={() => alert('SignUp!')}>
-        {/* <Box flexDirection="row"> */}
-        <Text variant="button" color="grey" paddingRight="s">
-          Do have an account ?
-        </Text>
-        <Text variant="button" color="primary">
-          Sign Up Here
-        </Text>
-        {/* </B ox> */}
-      </Button>
+      <Box alignItems="center">
+        <Button variant="transparent" onPress={() => alert('SignUp!')}>
+          <Box flexDirection="row" justifyContent="center">
+            <Text variant="button" color="grey" paddingRight="s">
+              Do have an account ?
+            </Text>
+            <Text variant="button" color="primary">
+              Sign Up Here
+            </Text>
+          </Box>
+        </Button>
+      </Box>
     </>
   );
   return (
     <Container {...{ footer }}>
-      <Box padding="xl" alignItems="center">
+      <Box padding="xl">
         <Text variant="title1" textAlign="center" marginBottom="l">
           Welcome back
         </Text>
-        <Text variant="body" textAlign="center">
+        <Text variant="body" textAlign="center" marginBottom="l">
           Use your credential below and login to your account
         </Text>
-        <TextInput
-          icon="mail"
-          placeholder="Enter your Email"
-          // validator={emailValidator}
-          // value={ref1.current}
-          width={300}
-          height={45}
-          // borderColor="#0c0d34"
-          borderWidth={1}
-        />
-        <TextInput
-          icon="mail"
-          placeholder="Enter your Email"
-          // validator={Value}
-          width={300}
-          height={45}
-          // borderColor="#0c0d34"
-          borderWidth={1}
-        />
-        <Button
-          variant="primary"
-          label="Have an account? Login"
-          onPress={() => navigation.goBack()}
-        />
+        <Box marginBottom="m">
+          <TextInput
+            icon="mail"
+            placeholder="Enter your Email"
+            validator={emailValidator}
+          />
+        </Box>
+        <Box marginBottom="m">
+          <TextInput
+            icon="lock"
+            placeholder="Enter your Password"
+            secureTextEntry={true}
+            validator={passwordValidator}
+          />
+        </Box>
+        <Box flexDirection="row" justifyContent="space-between">
+          <CheckBox label="Remember me" />
+          <Button variant="transparent" onPress={() => true}>
+            <Text color="primary">Forgot password</Text>
+          </Button>
+        </Box>
+        <Box alignItems="center" marginTop="s">
+          <Button
+            variant="primary"
+            label="Log into your account"
+            onPress={() => navigation.goBack()}
+          />
+        </Box>
       </Box>
     </Container>
   );
