@@ -9,21 +9,12 @@ import Icon from 'react-native-vector-icons/Feather';
 
 interface TextInputProps extends RNTextInputProps {
   icon: string;
-  validator: (input: string) => boolean;
 }
 
 const SIZE = theme.borderRadii.m * 2;
-const Valid = true;
-const Invalid = false;
-const Pristine = null;
 
-type InputState = typeof Valid | typeof Invalid | typeof Pristine;
-
-const TextInput = ({ icon, validator, ...props }: TextInputProps) => {
-  const [input, setInput] = useState('');
-  const [state, setState] = useState<InputState>(Pristine);
-  const reColor: keyof typeof theme.colors =
-    state === Pristine ? 'text' : state === Valid ? 'primary' : 'danger';
+const TextInput = ({ icon, ...props }: TextInputProps) => {
+  const reColor: 'text';
   const color = theme.colors[reColor];
   const onChangeText = (text: string) => {
     setInput(text);
