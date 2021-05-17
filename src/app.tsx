@@ -10,8 +10,9 @@ import {
   assets as authenticationAssets,
   AuthenticationNavigator,
 } from './Authentication';
-import { LoadAssets, theme } from './component';
-import { Routes } from './component/routes';
+import { LoadAssets } from './component';
+import { theme } from './component/theme';
+// import { Routes } from './component/Navigation';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const fonts = {

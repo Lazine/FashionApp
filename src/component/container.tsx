@@ -2,8 +2,9 @@
 /* eslint-disable react-native/no-color-literals */
 import React, { ReactNode } from 'react';
 import { StyleSheet, Dimensions, Image, StatusBar } from 'react-native';
-import { theme, Box } from '../component';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+import { Box, useTheme } from './theme';
 
 export const assets = [require('./assets/patterns/00.jpg')];
 const { width } = Dimensions.get('screen');
@@ -17,6 +18,7 @@ interface ContainerProps {
 
 const Container = ({ footer, children }: ContainerProps) => {
   const insets = useSafeAreaInsets();
+  const theme = useTheme();
 
   return (
     <Box flex={1} backgroundColor="white">

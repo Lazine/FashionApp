@@ -12,10 +12,13 @@ import Animated, {
   interpolate,
   Extrapolate,
 } from 'react-native-reanimated';
-import theme from '../../component/theme';
+import { useTheme } from '../../component';
+import { Theme, makeStyles } from '../../component/theme';
+import { Routes, StackNavigationProps } from '../../component/Navigation';
 
 const { width, height } = Dimensions.get('window');
 // const BORDER_RADIUS = 75;
+
 const slides = [
   {
     title: 'Relaxed',
@@ -64,10 +67,13 @@ const slides = [
   },
 ];
 
-const Onboarding = ({ navigation }) => {
+const Onboarding = ({
+  navigation,
+}: StackNavigationProps<Routes, 'Onboarding'>) => {
+  const theme = useTheme();
+  const styles = useStyles();
   const ScrollRef = useRef<Animated.ScrollView>(null);
   const { scrollHandler, x } = useScrollHandler();
-
   const backgroundColor = interpolateColor(x, {
     inputRange: slides.map((_, i) => i * width),
     outputRange: slides.map((slide) => slide.color),
@@ -189,7 +195,7 @@ const Onboarding = ({ navigation }) => {
   );
 };
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme: Theme) => ({
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -229,7 +235,7 @@ const styles = StyleSheet.create({
   //   bottom: 0,
   //   left: 0,
   // }
-});
+}));
 
 export const assets = slides.map((slide) => slide.picture.src);
 

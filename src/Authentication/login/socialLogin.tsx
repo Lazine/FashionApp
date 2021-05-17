@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import { View, Text } from 'react-native';
-import { Container, Button } from '../../component';
-import { theme, Box } from '../../component';
+import { Box, useTheme } from '../../component';
 import Svg, { Path } from 'react-native-svg';
 
 // interface SocialLoginProps {
@@ -11,7 +10,6 @@ import Svg, { Path } from 'react-native-svg';
 //   navigation: () => void;
 // }
 
-const SIZE = theme.borderRadii.l * 2;
 
 const Google = () => (
   <Svg width={20} height={20} viewBox="0 0 24 24" fill="none">
@@ -61,6 +59,8 @@ interface SocialIconProps {
 }
 
 const SocialIcon = ({ children }: SocialIconProps) => {
+  const theme = useTheme();
+  const SIZE = theme.borderRadii.l * 2;
   return (
     <Box
       marginHorizontal="s"

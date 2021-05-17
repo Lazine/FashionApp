@@ -15,7 +15,7 @@ const AuthenticationStack = createStackNavigator<Routes>();
 export const AuthenticationNavigator = () => {
   return (
     <AuthenticationStack.Navigator
-      initialRouteName="Login"
+      initialRouteName="Welcome"
       screenOptions={{ headerShown: false }}
     >
       <AuthenticationStack.Screen

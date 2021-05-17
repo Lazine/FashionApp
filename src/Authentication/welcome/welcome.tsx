@@ -4,7 +4,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
-  Text,
+  // Text,
   StyleSheet,
   Dimensions,
   Animated,
@@ -13,8 +13,8 @@ import {
 } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { Button } from '../../component';
-import { Box } from '../../component/theme';
-import theme from '../../component/theme';
+import { Box, Text, useTheme } from '../../component/theme';
+// import theme from '../../component/theme';
 
 const { width, height } = Dimensions.get('screen');
 export const SLIDER_HEIGHT = 0.61 * height;
@@ -35,13 +35,10 @@ const picture = {
 
 export const assets = [picture.src];
 
-const Welcome = ({ navigation }) => {
-  const LootieRef2 = useRef(null);
+const Welcome = ({ navigation }: StackNavigationProps<Routes, 'Welcome'>) => {
+  const theme = useTheme();
 
-  // const defaultOptions = {
-  //   loop: true,
-  //   autoplay: true,
-  // };
+  const LootieRef2 = useRef(null);
 
   useEffect(() => {
     LootieRef2.current.play();
