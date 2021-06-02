@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import { Box, Text } from '../../component';
+import { Box, Text } from '../../../component';
 import Icon from 'react-native-vector-icons/Feather';
 import { RectButton } from 'react-native-gesture-handler';
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { ReactNode } from 'react';
 import { View, Text } from 'react-native';
 import { Box, useTheme } from '../../component';
@@ -9,7 +10,6 @@ import Svg, { Path } from 'react-native-svg';
 //   onPress: () => void;
 //   navigation: () => void;
 // }
-
 
 const Google = () => (
   <Svg width={20} height={20} viewBox="0 0 24 24" fill="none">

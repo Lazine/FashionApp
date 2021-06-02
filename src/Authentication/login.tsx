@@ -1,12 +1,15 @@
 /* eslint-disable no-useless-escape */
-import React from 'react';
-import { View } from 'react-native';
-import { Container, Button, Box, Text } from '../../component';
-import SocialLogin from './socialLogin';
-import { Formik } from 'formik';
+import React, { useRef } from 'react';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import TextInput from '../../component/form/textInput';
-import CheckBox from '../../component/form/checkBox';
+
+import { Container, Button, Box, Text } from '../component';
+import { StackNavigationProps, Routes } from '../component/Navigation';
+
+import SocialLogin from './components/socialLogin';
+import TextInput from './components/form/textInput';
+import CheckBox from './components/form/checkBox';
+import Footer from './components/footer';
 
 interface LoginProps {
   subTitle: string;
@@ -31,24 +34,32 @@ const emailValidator = (email: string) =>
 
 const passwordValidator = (password: string) => password.length > 6;
 
-const Login = ({ navigation }) => {
+const Login = ({ navigation }: StackNavigationProps<Routes, 'Login'>) => {
+  
+  const {
+          handleChange,
+          handleBlur,
+          handleSubmit, 
+          errors,
+          touched,
+          values,
+          setFieldValue,
+        } = useFormik({
+          validationSchema:LoginSchema,
+          initialValues:{ email: '', password: '', remember: true },
+          onSubmit:(values) => console.log(values),
+        });
+
+  const password = useRef<typeof TextInput>(null);
+
   const footer = (
-    <>
-      <SocialLogin />
-      <Box alignItems="center">
-        <Button variant="transparent" onPress={() => alert('SignUp!')}>
-          <Box flexDirection="row" justifyContent="center">
-            <Text variant="button" color="grey" paddingRight="s">
-              Do have an account ?
-            </Text>
-            <Text variant="button" color="primary">
-              Sign Up Here
-            </Text>
-          </Box>
-        </Button>
-      </Box>
-    </>
+    <Footer 
+      title= "Don't have an account ?" 
+      action="Sign Up Here" 
+      onPress={() => navigation.navigate('SignUp')} 
+    />
   );
+
   return (
     <Container {...{ footer }}>
       <Box padding="xl">
@@ -58,20 +69,7 @@ const Login = ({ navigation }) => {
         <Text variant="body" textAlign="center" marginBottom="l">
           Use your credential below and login to your account
         </Text>
-        <Formik
-          validationSchema={LoginSchema}
-          initialValues={{ email: '', password: '', remember: true }}
-          onSubmit={(values) => console.log(values)}
-        >
-          {({
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            errors,
-            touched,
-            values,
-            setFieldValue,
-          }) => (
+
             <Box>
               <Box marginBottom="m">
                 <TextInput
@@ -81,10 +79,16 @@ const Login = ({ navigation }) => {
                   onBlur={handleBlur('email')}
                   error={errors.email}
                   touched={touched.email}
-                />
+                  autoCapitalize="none"
+                  autoCompleteType="email"
+                  returnKeyType="next"
+                  returnKeyLabel="next"
+                  onSubmitEditing={() => password.current?.focus()}
+                /> 
               </Box>
               <Box marginBottom="m">
                 <TextInput
+                  ref={password}
                   icon="lock"
                   placeholder="Enter your Password"
                   secureTextEntry={true}
@@ -92,6 +96,11 @@ const Login = ({ navigation }) => {
                   onBlur={handleBlur('password')}
                   error={errors.password}
                   touched={touched.password}
+                  autoCapitalize="none"
+                  autoCompleteType="password"
+                  returnKeyType="go"
+                  returnKeyLabel="go"
+                  onSubmitEditing={() => handleSubmit()}
                 />
               </Box>
 
@@ -101,7 +110,7 @@ const Login = ({ navigation }) => {
                   checked={values.remember}
                   onChange={() => setFieldValue('remember', !values.remember)}
                 />
-                <Button variant="transparent" onPress={() => true}>
+                <Button variant="transparent" onPress={() => navigation.navigate('ForgotPassword')}>
                   <Text color="primary">Forgot password</Text>
                 </Button>
               </Box>
@@ -113,8 +122,7 @@ const Login = ({ navigation }) => {
                 />
               </Box>
             </Box>
-          )}
-        </Formik>
+
       </Box>
     </Container>
   );

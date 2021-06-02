@@ -15,6 +15,7 @@ import LottieView from 'lottie-react-native';
 import { Button } from '../../component';
 import { Box, Text, useTheme } from '../../component/theme';
 // import theme from '../../component/theme';
+import { StackNavigationProps, Routes } from '../../component/Navigation';
 
 const { width, height } = Dimensions.get('screen');
 export const SLIDER_HEIGHT = 0.61 * height;
