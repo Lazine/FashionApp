@@ -7,6 +7,7 @@ import Welcome, { assets as WelcomeAssets } from './welcome';
 import Login from './login';
 import SignUp from './signUp';
 import ForgotPassword from './forgotPassword';
+import PasswordChanged from './passwordChanged';
 // export { default as Onboarding } from './onboarding';
 // export { default as Welcome } from './welcome';
 // export { default as Login } from './login';
@@ -17,7 +18,7 @@ const AuthenticationStack = createStackNavigator<Routes>();
 export const AuthenticationNavigator = () => {
   return (
     <AuthenticationStack.Navigator
-      initialRouteName="Welcome"
+      initialRouteName="SignUp"
       screenOptions={{ headerShown: false }}
     >
       <AuthenticationStack.Screen
@@ -43,6 +44,11 @@ export const AuthenticationNavigator = () => {
       <AuthenticationStack.Screen
         name="ForgotPassword"
         component={ForgotPassword}
+        options={{ headerShown: false }}
+      />
+      <AuthenticationStack.Screen
+        name="PasswordChanged"
+        component={PasswordChanged}
         options={{ headerShown: false }}
       />
     </AuthenticationStack.Navigator>

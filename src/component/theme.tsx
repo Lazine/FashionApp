@@ -1,4 +1,5 @@
-import { ViewStyle, TextStyle, ImageStyle } from 'react-native';
+/* eslint-disable prettier/prettier */
+import { ViewStyle, TextStyle, ImageStyle, Dimensions } from 'react-native';
 
 import {
   createTheme,
@@ -7,6 +8,16 @@ import {
   createBox,
   useTheme as useReTheme,
 } from '@shopify/restyle';
+
+const originWidth = 320;
+const originHeight = 568;
+
+export const { width, height } = Dimensions.get('window');
+
+export const widthRatio = (width / originWidth) < 1.2 ? 0.74 : 1;
+
+export const heightRatio = (height / originHeight) < 1.2 ? 0.74 : 1;
+
 
 export const theme: BaseTheme = createTheme({
   colors: {
@@ -18,47 +29,48 @@ export const theme: BaseTheme = createTheme({
     white: '#fff',
     // darkGrey: '#8a8d90',
     grey: '#f4f0ef',
+    primaryLight: '#E7F9F7',
   },
   spacing: {
-    s: 8,
-    m: 16,
-    l: 24,
-    xl: 40,
+    s: 8 * widthRatio,
+    m: 16 * widthRatio,
+    l: 24 * widthRatio,
+    xl: 40 * widthRatio,
   },
   borderRadii: {
-    s: 4,
-    m: 10,
-    l: 25,
-    xl: 75,
+    s: 4 * widthRatio,
+    m: 10 * widthRatio,
+    l: 25 * widthRatio,
+    xl: 75 * widthRatio,
   },
   textVariants: {
     hero: {
-      fontSize: 80,
-      lineHeight: 80,
+      fontSize: 80 * widthRatio,
+      lineHeight: 80 * widthRatio,
       fontFamily: 'SFProText-Bold',
       color: 'white',
       textAlign: 'center',
     },
     title1: {
-      fontSize: 28,
+      fontSize: 28 * widthRatio,
       fontFamily: 'SFProText-Semibold',
       color: 'secondary',
     },
     title2: {
-      fontSize: 28,
-      lineHeight: 30,
+      fontSize: 28 * widthRatio,
+      lineHeight: 30 * widthRatio,
       fontFamily: 'SFProText-Semibold',
       color: 'secondary',
     },
     body: {
-      fontSize: 16,
-      lineHeight: 24,
+      fontSize: 16 * widthRatio,
+      lineHeight: 24 * widthRatio,
       fontFamily: 'SFProText-Regular',
       color: 'text',
       textAlign: 'center',
     },
     button: {
-      fontSize: 15,
+      fontSize: 15 * widthRatio,
       fontFamily: 'SFProText-Semibold',
       color: 'text',
     },
